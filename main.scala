@@ -13,23 +13,35 @@ or the code will be put on the ticket that they buy
 package via
 
 object Rewards {
-    def authentication(str:String): String = {
-        var temp = "Sorry that code does not work"
-        var num = 0
-        if(MyArrayBuffer.valueExists(str)){
-           num = MyArrayBuffer.getPoints(str)
-           MyArrayBuffer.removeCode(str)
-           temp = num + " point(s) have been added to your account"
-        }
-        temp
+  def authentication(str: String):Boolean = {
+    var temp = "Sorry that code does not work\nPlease try again\n"
+    var num = 0
+    var str1 = str.toLowerCase()
+    var bool = true
+    
+    if (str1 == "show") {
+      temp = ""
+      MyArrayBuffer.showContents()     
     }
-
-    def main(args: Array[String]){
-        println("Enter code here ")
-        var  result = scala.io.StdIn.readLine();
-        authentication(result)
+    
+    if (MyArrayBuffer.valueExists(str1)) {
+      num = MyArrayBuffer.getPoints(str1)
+      MyArrayBuffer.removeCode(str1)
+      temp = num + " point(s) have been added to your account\nThank you for riding with VIA!\n"
+      bool = false
     }
+    println(temp)
+    bool
+  }
 
-    //var s = scala.util.Random.alphanumeric.take(10).mkString
-    //s.toLowerCase
+  def main(args: Array[String]) {
+    var a = true
+    Code.make()
+    while (a == true) {
+      println("Enter code here ")
+      var result = scala.io.StdIn.readLine();
+      a = authentication(result)
+    }
+  }
+
 }
