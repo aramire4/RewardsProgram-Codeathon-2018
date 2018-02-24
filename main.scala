@@ -13,8 +13,14 @@ or the code will be put on the ticket that they buy
 package via
 object Rewards {
     def authentication(str:String): String = {
-        var temp
-        //for(i <- 0 to 
+        var temp = "Sorry that code does not work"
+        var num = 0
+        if(MyArrayBuffer.valueExists(str)){
+           num = MyArrayBuffer.getPoints(str)
+           MyArrayBuffer.removeCode(str)
+           temp = num + " point(s) have been added to your account"
+        }
+        temp
     }
 
     def main(args: Array[String]){
