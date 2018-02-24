@@ -1,8 +1,9 @@
 package via
+    
+import io.StdIn._
+import scala.collection.mutable.ArrayBuffer
 
 object MyArrayBuffer{
-    import io.StdIn._
-    import scala.collection.mutable.ArrayBuffer
     //var interactive = true
     /*
     def main(args: ArrayBuffer[(String, Int)]) = {

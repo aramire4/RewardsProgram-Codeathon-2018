@@ -11,6 +11,7 @@ or the code will be put on the ticket that they buy
 */
 
 package via
+
 object Rewards {
     def authentication(str:String): String = {
         var temp = "Sorry that code does not work"
@@ -24,6 +25,7 @@ object Rewards {
     }
 
     def main(args: Array[String]){
+        println("Enter code here ")
         var  result = scala.io.StdIn.readLine();
         authentication(result)
     }
